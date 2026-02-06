@@ -1,0 +1,26 @@
+product_id,product_name,category,price,cost,is_available
+1,Espresso,coffee,3.5,0.8,True
+2,Americano,coffee,4.0,0.85,True
+3,Latte,coffee,5.5,1.2,True
+4,Cappuccino,coffee,5.5,1.15,True
+5,Flat White,coffee,5.0,1.1,True
+6,Cold Brew,coffee,5.0,0.9,True
+7,Mocha,coffee,6.0,1.4,True
+8,Macchiato,coffee,4.5,0.95,True
+9,English Breakfast Tea,tea,3.5,0.5,True
+10,Earl Grey,tea,3.5,0.5,True
+11,Matcha Latte,tea,6.0,1.8,True
+12,Chai Latte,tea,5.5,1.3,True
+13,Green Tea,tea,3.0,0.4,False
+14,Croissant,pastry,4.0,1.2,True
+15,Blueberry Muffin,pastry,3.5,1.0,True
+16,Banana Bread,pastry,4.0,0.9,True
+17,Chocolate Cookie,pastry,3.0,0.7,True
+18,Cinnamon Roll,pastry,4.5,1.1,True
+19,Avocado Toast,food,9.0,3.0,True
+20,Breakfast Burrito,food,10.0,3.5,True
+21,Grilled Cheese,food,8.0,2.5,True
+22,Caesar Salad,food,11.0,3.2,True
+23,Soup of the Day,food,7.0,2.0,True
+24,Branded Mug,merchandise,15.0,4.0,True
+25,Coffee Beans (250g),merchandise,18.0,7.0,True

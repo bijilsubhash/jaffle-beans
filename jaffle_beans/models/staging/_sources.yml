@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: Raw seed data for Jaffle Beans coffee chain.
+    tables:
+      - name: raw_customers
+        description: Raw customer records including loyalty program information.
+      - name: raw_orders
+        description: Raw order headers with status and store assignment.
+      - name: raw_order_items
+        description: Raw line items for each order.
+      - name: raw_products
+        description: Raw product catalog including pricing and cost.
+      - name: raw_stores
+        description: Raw store location data.
+      - name: raw_payments
+        description: Raw payment transactions including refunds.

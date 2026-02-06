@@ -1,0 +1,6 @@
+store_id,store_name,city,state,opened_at,is_active
+1,Downtown Flagship,San Francisco,CA,2022-01-15,True
+2,Mission District,San Francisco,CA,2022-06-01,True
+3,Oakland Hub,Oakland,CA,2023-03-10,True
+4,Berkeley Cafe,Berkeley,CA,2023-09-20,True
+5,Palo Alto,Palo Alto,CA,2024-01-05,False

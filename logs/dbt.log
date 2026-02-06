@@ -1,0 +1,46 @@
+[0m09:17:58.368969 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d9f33b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10db21520>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10db20bf0>]}
+
+
+============================== 09:17:58.385051 | db64a2b0-70ea-497f-a64c-8ce8659e0fa3 ==============================
+[0m09:17:58.385051 [info ] [MainThread]: Running with dbt=1.11.3
+[0m09:17:58.385273 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'target_path': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_cache_events': 'False', 'introspect': 'True', 'warn_error': 'None', 'invocation_command': 'dbt init jaffle_beans', 'indirect_selection': 'eager', 'empty': 'None', 'static_parser': 'True', 'no_print': 'None', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'write_json': 'True', 'log_format': 'default', 'cache_selected_only': 'False', 'use_experimental_parser': 'False', 'profiles_dir': '/Users/bijilsubhash/repos/winefi-data-engine/winefi/core/transform/winefi_dbt', 'log_path': 'logs', 'debug': 'False', 'printer_width': '80', 'use_colors': 'True'}
+[0m09:17:58.438715 [debug] [MainThread]: Starter project path: /Users/bijilsubhash/repos/dbt-agent-demo/.venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m09:17:58.441701 [info ] [MainThread]: 
+Your new dbt project "jaffle_beans" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m09:17:58.441847 [info ] [MainThread]: Setting up your profile.
+[0m09:19:20.081830 [info ] [MainThread]: Profile jaffle_beans written to /Users/bijilsubhash/repos/winefi-data-engine/winefi/core/transform/winefi_dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m09:19:20.093338 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 81.75829, "process_in_blocks": "0", "process_kernel_time": 1.308716, "process_mem_max_rss": "394362880", "process_out_blocks": "0", "process_user_time": 5.372564}
+[0m09:19:20.100012 [debug] [MainThread]: Command `dbt init` succeeded at 09:19:20.099749 after 81.77 seconds
+[0m09:19:20.101076 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10df12120>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x122bbe630>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x122a56300>]}
+[0m09:19:20.101631 [debug] [MainThread]: Flushing usage events
+[0m09:19:21.023791 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:35:19.681280 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d9d4fb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10dbd5c70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10dbd5970>]}
+
+
+============================== 09:35:19.683462 | 3cd093dd-fedd-480a-b884-83ff098c0145 ==============================
+[0m09:35:19.683462 [info ] [MainThread]: Running with dbt=1.11.3
+[0m09:35:19.683677 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'invocation_command': 'dbt seed', 'send_anonymous_usage_stats': 'True', 'target_path': 'None', 'no_print': 'None', 'introspect': 'True', 'empty': 'None', 'printer_width': '80', 'quiet': 'False', 'write_json': 'True', 'log_cache_events': 'False', 'warn_error': 'None', 'log_path': 'logs', 'partial_parse': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_format': 'default', 'use_experimental_parser': 'False', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'profiles_dir': '/Users/bijilsubhash/repos/winefi-data-engine/winefi/core/transform/winefi_dbt', 'cache_selected_only': 'False', 'indirect_selection': 'eager', 'fail_fast': 'False'}
+[0m09:35:19.683888 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /Users/bijilsubhash/repos/dbt-agent-demo/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m09:35:19.684095 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": false, "command_wall_clock_time": 0.027543625, "process_in_blocks": "0", "process_kernel_time": 0.090345, "process_mem_max_rss": "107659264", "process_out_blocks": "0", "process_user_time": 0.409854}
+[0m09:35:19.684239 [debug] [MainThread]: Command `dbt seed` failed at 09:35:19.684212 after 0.03 seconds
+[0m09:35:19.684338 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d9d7950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10dbd5e20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10dbd7bc0>]}
+[0m09:35:19.684430 [debug] [MainThread]: Flushing usage events
+[0m09:35:20.586741 [debug] [MainThread]: An error was encountered while trying to flush usage events

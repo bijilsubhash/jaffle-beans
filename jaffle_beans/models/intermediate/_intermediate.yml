@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: int_orders_enriched
+    description: >
+      Orders enriched with item-level aggregates and payment summaries.
+      One row per order with total quantities, item totals, and net payments.
+    columns:
+      - name: order_id
+        description: Primary key.
+        tests:
+          - unique
+          - not_null

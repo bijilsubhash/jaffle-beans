@@ -1,0 +1,58 @@
+version: '3'
+
+dotenv: ['.env']
+
+vars:
+  DBT_DIR: jaffle_beans
+  DBT_PROFILES_DIR: "."
+
+tasks:
+  setup:
+    desc: Install dependencies and prepare .env
+    cmds:
+      - uv sync
+      - |
+        if [ ! -f .env ]; then
+          cp .env.example .env
+          echo ""
+          echo "Created .env from .env.example."
+          echo "Please fill in your GCP_PROJECT_ID and DEV_SCHEMA, then run 'task bootstrap'."
+          exit 1
+        fi
+
+  bootstrap:
+    desc: Full setup - install deps, seed, and build
+    cmds:
+      - task: setup
+      - task: seed
+      - task: build
+
+  seed:
+    desc: Load seed CSVs into the raw dataset
+    dir: "{{.DBT_DIR}}"
+    cmds:
+      - uv run dbt seed --profiles-dir {{.DBT_PROFILES_DIR}}
+
+  build:
+    desc: Build all models and run tests
+    dir: "{{.DBT_DIR}}"
+    cmds:
+      - uv run dbt build --profiles-dir {{.DBT_PROFILES_DIR}}
+
+  run:
+    desc: Run all models (no tests)
+    dir: "{{.DBT_DIR}}"
+    cmds:
+      - uv run dbt run --profiles-dir {{.DBT_PROFILES_DIR}}
+
+  test:
+    desc: Run all tests
+    dir: "{{.DBT_DIR}}"
+    cmds:
+      - uv run dbt test --profiles-dir {{.DBT_PROFILES_DIR}}
+
+  clean:
+    desc: Clean dbt artifacts
+    dir: "{{.DBT_DIR}}"
+    cmds:
+      - uv run dbt clean --profiles-dir {{.DBT_PROFILES_DIR}}

@@ -1,0 +1,118 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: Cleaned customer data with standardized loyalty tiers.
+    columns:
+      - name: customer_id
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+      - name: loyalty_tier
+        description: "Customer loyalty tier: bronze, silver, gold, platinum, or null if not enrolled."
+        tests:
+          - accepted_values:
+              values: ['bronze', 'silver', 'gold', 'platinum']
+              config:
+                where: "loyalty_tier is not null"
+
+  - name: stg_orders
+    description: Cleaned order headers.
+    columns:
+      - name: order_id
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: Foreign key to customers.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: store_id
+        description: Foreign key to stores.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_stores')
+              field: store_id
+      - name: status
+        description: "Order status: completed, cancelled, or refunded."
+        tests:
+          - accepted_values:
+              values: ['completed', 'cancelled', 'refunded']
+
+  - name: stg_order_items
+    description: Cleaned order line items.
+    columns:
+      - name: order_item_id
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: Foreign key to orders.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
+      - name: product_id
+        description: Foreign key to products.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_products')
+              field: product_id
+
+  - name: stg_products
+    description: Cleaned product catalog.
+    columns:
+      - name: product_id
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+      - name: category
+        description: "Product category: coffee, tea, pastry, food, or merchandise."
+        tests:
+          - accepted_values:
+              values: ['coffee', 'tea', 'pastry', 'food', 'merchandise']
+
+  - name: stg_stores
+    description: Cleaned store location data.
+    columns:
+      - name: store_id
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_payments
+    description: Cleaned payment transactions.
+    columns:
+      - name: payment_id
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: Foreign key to orders.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
+      - name: payment_method
+        description: "Payment method used."
+        tests:
+          - accepted_values:
+              values: ['credit_card', 'debit_card', 'mobile_pay', 'gift_card', 'cash']
+      - name: status
+        description: "Payment status: success or refund."
+        tests:
+          - accepted_values:
+              values: ['success', 'refund']

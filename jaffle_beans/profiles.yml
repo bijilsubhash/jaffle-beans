@@ -1,0 +1,13 @@
+jaffle_beans:
+  outputs:
+    dev:
+      dataset: "{{ env_var('DEV_SCHEMA', 'default') }}"
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: US
+      method: oauth
+      priority: interactive
+      project: "{{ env_var('GCP_PROJECT_ID') }}"
+      threads: 4
+      type: bigquery
+  target: dev

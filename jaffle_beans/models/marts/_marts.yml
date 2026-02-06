@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: mrt_customers
+    description: >
+      Customer 360 table with lifetime value, order counts by status,
+      and tenure metrics. One row per customer.
+    columns:
+      - name: customer_id
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: Customer first name.
+      - name: last_name
+        description: Customer last name.
+      - name: email
+        description: Customer email address.
+      - name: loyalty_tier
+        description: "Loyalty tier: bronze, silver, gold, platinum, or null."
+      - name: customer_since
+        description: Timestamp when the customer record was created.
+      - name: total_orders
+        description: Total number of orders placed.
+      - name: completed_orders
+        description: Number of completed orders.
+      - name: cancelled_orders
+        description: Number of cancelled orders.
+      - name: refunded_orders
+        description: Number of refunded orders.
+      - name: lifetime_value
+        description: Total net payment from completed orders.
+      - name: avg_order_value
+        description: Average order value for completed orders.
+      - name: first_order_at
+        description: Timestamp of the customer's first order.
+      - name: last_order_at
+        description: Timestamp of the customer's most recent order.
+      - name: customer_tenure_days
+        description: Days between first and last order.
