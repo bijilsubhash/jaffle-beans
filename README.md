@@ -1,6 +1,6 @@
-# Jaffle Beans — dbt Demo Project
+# Jaffle Beans: dbt Demo Project
 
-A demo dbt project for a fictional coffee shop chain, built on **BigQuery**. Designed for testing and showcasing Claude skills for dbt.
+A demo dbt project for a fictional coffee shop chain, built on BigQuery. Designed for testing and showcasing Claude skills for dbt.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ set -a && source .env && set +a
 claude
 ```
 
-> **Note:** Never store actual secrets (API tokens, passwords) in `.env` — agent tools may read file contents and command output, sending them to the API. Use a secrets manager or application-default credentials instead. The values in this project's `.env` (`GCP_PROJECT_ID`, `DEV_SCHEMA`) are non-sensitive configuration, not secrets.
+> **Note:** Never store actual secrets (API tokens, passwords) in `.env`. Agent tools may read file contents and command output, sending them to the API. Use a secrets manager or application-default credentials instead. The values in this project's `.env` (`GCP_PROJECT_ID`, `DEV_SCHEMA`) are non-sensitive configuration, not secrets.
 
 ## Available Tasks
 
