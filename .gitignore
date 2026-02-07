@@ -9,6 +9,9 @@ dist/
 wheels/
 *.egg-info
 
+# dbt logs
+logs/
+
 # Virtual environments
 .venv
 
