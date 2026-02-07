@@ -17,6 +17,17 @@ task setup          # installs deps, creates .env from .env.example
 task bootstrap      # seeds raw data + builds all models + runs tests
 ```
 
+## Using with Claude Code
+
+Before launching Claude Code, load the `.env` variables into your shell so they are available to the agent:
+
+```bash
+set -a && source .env && set +a
+claude
+```
+
+> **Note:** Never store actual secrets (API tokens, passwords) in `.env` — agent tools may read file contents and command output, sending them to the API. Use a secrets manager or application-default credentials instead. The values in this project's `.env` (`GCP_PROJECT_ID`, `DEV_SCHEMA`) are non-sensitive configuration, not secrets.
+
 ## Available Tasks
 
 | Command          | Description                        |
