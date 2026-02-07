@@ -20,10 +20,16 @@ tasks:
           exit 1
         fi
 
+  auth:
+    desc: Authenticate to GCP using application-default credentials
+    cmds:
+      - gcloud auth application-default login
+
   bootstrap:
-    desc: Full setup - install deps, seed, and build
+    desc: Full setup - install deps, authenticate, seed, and build
     cmds:
       - task: setup
+      - task: auth
       - task: seed
       - task: build
 

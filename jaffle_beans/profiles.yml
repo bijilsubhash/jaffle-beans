@@ -4,7 +4,7 @@ jaffle_beans:
       dataset: "{{ env_var('DEV_SCHEMA', 'default') }}"
       job_execution_timeout_seconds: 300
       job_retries: 1
-      location: US
+      location: "{{ env_var('GCP_REGION')}}"
       method: oauth
       priority: interactive
       project: "{{ env_var('GCP_PROJECT_ID') }}"

@@ -6,8 +6,10 @@ A demo dbt project for a fictional coffee shop chain, built on BigQuery. Designe
 
 - [uv](https://docs.astral.sh/uv/)
 - [Task](https://taskfile.dev/)
+- [gcloud CLI](https://cloud.google.com/sdk/docs/install)
 - A GCP project with BigQuery enabled
-- `gcloud auth application-default login`
+
+This project authenticates to BigQuery using OAuth via [Application Default Credentials](https://cloud.google.com/docs/authentication/application-default-credentials). Run `task auth` to log in before your first build.
 
 ## Getting Started
 
@@ -33,7 +35,8 @@ claude
 | Command          | Description                        |
 |------------------|------------------------------------|
 | `task setup`     | Install deps and prepare `.env`    |
-| `task bootstrap` | Setup + seed + build               |
+| `task auth`      | Authenticate to GCP via OAuth      |
+| `task bootstrap` | Setup + auth + seed + build        |
 | `task seed`      | Load seed CSVs into BigQuery       |
 | `task build`     | Build all models and run tests     |
 | `task run`       | Run all models (no tests)          |
