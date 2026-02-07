@@ -9,8 +9,6 @@ A demo dbt project for a fictional coffee shop chain, built on BigQuery. Designe
 - [gcloud CLI](https://cloud.google.com/sdk/docs/install)
 - A GCP project with BigQuery enabled
 
-This project authenticates to BigQuery using OAuth via [Application Default Credentials](https://cloud.google.com/docs/authentication/application-default-credentials). Run `task auth` to log in before your first build.
-
 ## Getting Started
 
 ```bash
@@ -28,7 +26,7 @@ set -a && source .env && set +a
 claude
 ```
 
-> **Note:** Never store actual secrets (API tokens, passwords) in `.env`. Agent tools may read file contents and command output, sending them to the API. Use a secrets manager or application-default credentials instead. The values in this project's `.env` (`GCP_PROJECT_ID`, `DEV_SCHEMA`) are non-sensitive configuration, not secrets.
+> **Note:** In the context of AI tool use, refrain from storing actual secrets (API tokens, passwords) in `.env`. Agent tools could read file contents and command output, sending them to the API. The values in this project's `.env` (`GCP_PROJECT_ID`, `DEV_SCHEMA`) are non-sensitive configuration, not secrets.
 
 ## Available Tasks
 
