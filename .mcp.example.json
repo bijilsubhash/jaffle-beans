@@ -1,0 +1,58 @@
+{
+  "mcpServers": {
+    "bigquery": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-bigquery",
+        "--project", "${GCP_PROJECT_ID}",
+        "--location", "${GCP_REGION}"
+      ]
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    },
+    "dbt": {
+      "command": "uvx",
+      "args": [
+        "--from", "dbt-mcp",
+        "dbt-mcp"
+      ],
+      "env": {
+        "DBT_HOST": "${DBT_CLOUD_HOST}",
+        "DBT_TOKEN": "${DBT_CLOUD_TOKEN}",
+        "DBT_PROD_ENV_ID": "${DBT_CLOUD_PROD_ENV_ID}",
+        "DBT_DEV_ENV_ID": "${DBT_CLOUD_DEV_ENV_ID}",
+        "DBT_USER_ID": "${DBT_CLOUD_USER_ID}",
+        "DBT_PROJECT_DIR": "${PWD}/jaffle_beans"
+      }
+    },
+    "airflow": {
+      "command": "uvx",
+      "args": [
+        "apache-airflow-mcp-server"
+      ],
+      "env": {
+        "AIRFLOW_API_URL": "${AIRFLOW_API_URL}",
+        "AIRFLOW_API_TOKEN": "${AIRFLOW_API_TOKEN}"
+      }
+    },
+    "jira": {
+      "command": "uvx",
+      "args": [
+        "mcp-atlassian"
+      ],
+      "env": {
+        "JIRA_URL": "${JIRA_URL}",
+        "JIRA_USERNAME": "${JIRA_USERNAME}",
+        "JIRA_API_TOKEN": "${JIRA_API_TOKEN}"
+      }
+    }
+  }
+}

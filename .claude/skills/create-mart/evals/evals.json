@@ -1,0 +1,63 @@
+{
+  "skill_name": "create-mart",
+  "evals": [
+    {
+      "id": 1,
+      "name": "store-performance-mart",
+      "prompt": "hey, head of retail wants a dashboard showing how each of our stores is doing — revenue, order volume, refund rate, that kind of thing. could you build a mart we can point looker at? she mentioned wanting to look at last 90 days specifically since they're prepping for the Q1 board review",
+      "expected_output": "A mrt_<store-something>.sql file with one row per store, revenue/order count/refund rate columns, scoped to last 90 days. Schema YAML appended to _marts.yml. At least one unit test in models/unit_tests/_marts_unit_tests.yml. Should explore the warehouse first via the BQ MCP server.",
+      "files": [],
+      "assertions": [
+        "A mart .sql file exists with a name starting with 'mrt_'",
+        "Mart SQL uses {{ ref(...) }} or {{ source(...) }} for all upstream references",
+        "Mart SQL has no {{ config(materialized=...) }} block",
+        "Every join has table aliases on both sides",
+        "Mart applies a 90-day (or last-N-days) date filter",
+        "_marts.yml has the new mart entry with description and primary-key tests (unique + not_null)",
+        "A separate '_marts_unit_tests.yml' file exists (unit tests not inline in _marts.yml)",
+        "Unit test file has at least one unit_test entry for the new mart",
+        "_marts.yml does NOT contain any 'unit_tests:' block",
+        "run_summary.md mentions exploring the warehouse before writing SQL",
+        "run_summary.md documents the chosen definition of 'refund rate'"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "product-performance-mart",
+      "prompt": "marketing wants to understand product performance — total units sold, revenue, refund rate per product. and they want to slice by category (coffee vs pastry vs whatever else we sell). can you put this in the warehouse?",
+      "expected_output": "A mrt_<product-something>.sql file with one row per product, units/revenue/refund-rate columns, includes the category column. Should discover actual category values via warehouse exploration.",
+      "files": [],
+      "assertions": [
+        "A mart .sql file exists with a name starting with 'mrt_'",
+        "Mart SQL uses {{ ref(...) }} or {{ source(...) }} for all upstream references",
+        "Mart SQL has no {{ config(materialized=...) }} block",
+        "Every join has table aliases on both sides",
+        "Mart includes a 'category' column",
+        "Mart includes units sold, revenue, and refund-rate-related columns",
+        "_marts.yml has the new mart entry with description and primary-key tests (unique + not_null)",
+        "A separate '_marts_unit_tests.yml' file exists",
+        "Unit test file has at least one unit_test entry",
+        "_marts.yml does NOT contain any 'unit_tests:' block",
+        "Agent discovered actual category values from the data"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "loyalty-churn-overlap",
+      "prompt": "loyalty team is trying to identify gold and platinum members who might be churning. can you build them a mart with each customer's tier, lifetime spend, and how recently they last ordered?",
+      "expected_output": "Should detect mrt_customers already covers tier/lifetime_value/last_order_at and surface this. Either build a focused new mart (with churn-specific value-add) or push back. Bad outcome: silent duplicate mart.",
+      "files": [],
+      "assertions": [
+        "Output acknowledges that mrt_customers already contains loyalty_tier, lifetime_value, and last_order_at",
+        "Agent did not silently build a duplicate mart (no-new-mart with justification, OR new mart adds genuine value)",
+        "If a new mart exists, its name starts with 'mrt_'",
+        "If a new mart exists, it uses {{ ref(...) }} for upstream references",
+        "If a new mart exists, it has no {{ config(materialized=...) }} block",
+        "If a new mart exists, every join has table aliases",
+        "If a new mart exists, _marts.yml has its entry with primary-key tests",
+        "If a new mart exists, a separate '_marts_unit_tests.yml' file exists",
+        "run_summary.md describes the check of existing marts before deciding what to build"
+      ]
+    }
+  ]
+}

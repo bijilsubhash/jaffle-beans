@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: raw
     schema: raw
-    description: Raw seed data for Jaffle Beans coffee chain.
+    description: Raw seed data for Jaffle Beans coffee chain located in the seeds folder.
     tables:
       - name: raw_customers
         description: Raw customer records including loyalty program information.
